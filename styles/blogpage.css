@@ -1,0 +1,126 @@
+/* * {
+    margin: 0;
+    border: none;
+} */
+
+
+
+#addBlogBtn {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgb(139, 3, 121);
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    border-radius: 16px;
+    padding: 5px 5px 4px 5px;
+}
+
+
+#addBlogBtn{
+    border-radius: 16px;
+    height: 50px;
+}
+
+
+
+.blogcards {
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.blogcard {
+    background-color: #111827;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px 15px;
+}
+
+.blogcard .heading {
+    display: flex;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid white;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.blogcard .heading div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.blogcard .heading div img {
+
+    border-radius: 16px;
+    width: 24px;
+    object-fit: cover;
+    height: 24px;
+}
+
+.blogcard .heading div p {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.blogcard .heading div p:hover{
+    text-decoration: underline;
+}
+
+.new-blog {
+    margin-left: 60px;
+    margin-top: 60px;
+    margin-right: 60px;
+    padding: 16px 16px;
+    background-color: #111827;
+}
+
+.new-blog p {
+    margin-top: 1px;
+    opacity: 0.8;
+}
+
+#title {
+    background-color: #1f2937;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 100%;
+    padding: 5px 5px;
+    margin-bottom: 20px;
+}   
+
+
+#content {
+    resize: none;
+    min-height: 200px;
+    background-color: #1f2937;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 100%;
+    padding: 5px 5px;
+    margin-bottom: 40px;
+
+}
+
+#publish{
+    
+    cursor: pointer;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px 10px 20px;
+}
+
+#publish {
+    background-color: #10b981;
+}
+
+#publish:hover {
+    background-color: #0d815f;
+}
