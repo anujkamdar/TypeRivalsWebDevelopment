@@ -36,9 +36,13 @@ onAuthStateChanged(auth, async (user) => {
 
         `
 
-
+        let blogIds = [];
         for(let blogId in blogsData){
-            const blogData = blogsData[blogId];
+            blogIds.push(blogId);
+        }
+        for(let i = blogIds.length - 1; i >= 0; i--){
+            const blogData = blogsData[blogIds[i]];
+
             const blogCard = document.createElement('div')
             blogCard.classList.add('blogcard')
 
@@ -56,7 +60,9 @@ onAuthStateChanged(auth, async (user) => {
                         </div>
             `
             blogCards.appendChild(blogCard);
+            
         }
+        
 
         blogsDiv.appendChild(blogCards);
         const userLinks = document.querySelectorAll('.heading p')
