@@ -4,7 +4,7 @@ import {
   db, getDatabase, ref, set, get, push, model
 } from './firebaseinit.js';
 
-if (document.querySelector('.typing-container')) {
+if (document.querySelector('.verify-contest')) {
   let uid;
   let username;
   let userCity;
@@ -21,7 +21,7 @@ if (document.querySelector('.typing-container')) {
         userCity = userData['city'];
         userProfilePic = userData.imageUrl;
         (document.querySelector('.header .public-profile')).innerHTML =
-              `
+          `
               <img src="${userData.imageUrl}">
               <p>${username}</p>
               `
@@ -39,17 +39,49 @@ if (document.querySelector('.typing-container')) {
 
   (async () => {
     try {
-      console.log("hello")
       let prompts = {
-        'easy': ``
+        'easy': `Write a short passage with at least ${contestTime * 3} words using simple sentences and easy words for typing practice`,
+        'medium': `Write a short passage with at least ${contestTime * 3} words using slightly harder words and varied sentences for typing practice`,
+        'hard': `Write a passage with at least ${contestTime * 3} words using advanced vocabulary, punctuation, and detailed sentence structures for typing practice and dont give double spaces`
       }
-      const prompt = "Write a story about a magic backpack."
-      const result = await model.generateContent(prompt);
-      const response = result.response;
-      const targetText = response.text();
-      runContest(targetText);
+      let url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyChqjTsap4lW-qLUyV7QQQEYOdziyJRzXo`
+
+
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{ text: `${prompts[difficulty]}` }]
+          }]
+        })
+      });
+
+
+      if (!response.ok) {
+        console.log("Failed");
+        throw new Error('Failed to fetch response from API.');
+      }
+
+
+
+      const data = await response.json();
+      const value = data.candidates[0].content.parts[0].text
+      const normalisedText = value.replace(/\s{2,}/g, ' ');
+
 
       
+
+
+
+      runContest(normalisedText);
+
+
+
+
     } catch (error) {
       let storedText = {
         // agar gemini se text nhi aaya to ispe fallback in future and abhi yehi text
@@ -65,6 +97,35 @@ if (document.querySelector('.typing-container')) {
 
 
   function runContest(targetText) {
+    const loader = document.querySelector('.progress-div')
+    const realTimeStatsDiv = document.createElement('div');
+    realTimeStatsDiv.classList.add('realtime-stats')
+
+    realTimeStatsDiv.innerHTML = 
+    `
+        <div class="timer"><span>30</span>seconds</div>
+        <div class="realtime-WPM">
+            <div>0</div>
+            <p>WPM</p>
+        </div>
+        <div class="realtime-accuracy">
+            <div>0</div>
+            <p>Accuracy</p>
+        </div>
+    `
+
+    loader.after(realTimeStatsDiv);
+    loader.remove()
+
+    const typingContainerDiv = document.createElement('div')
+    typingContainerDiv.classList.add('typing-container')
+    typingContainerDiv.innerHTML = 
+    `
+        <div class="target-text"></div>
+        <textarea class="input-area"></textarea>
+    `
+    realTimeStatsDiv.after(typingContainerDiv)
+
     const targetWords = targetText.split(" ");
     const targetTextElement = document.querySelector('.target-text');
     const inputArea = document.querySelector('.input-area');
@@ -82,6 +143,10 @@ if (document.querySelector('.typing-container')) {
     let netWpmData = [];
     let grossWpmData = [];
     let contestId;
+
+    targetTextElement.addEventListener("click", () => {
+      inputArea.focus();
+    })
 
     inputArea.addEventListener('input', () => {
       if (!interval) {
@@ -109,7 +174,7 @@ if (document.querySelector('.typing-container')) {
             console.log(grossWpmData)
             clearInterval(interval);
             await saveContestData(netWPM, accuracy, difficulty, contestTime, targetText, targetWords, userWords, netWpmData, grossWpmData, grossWPM);
-            await saveContestDataGlobal(uid, username,  userProfilePic ,netWPM, accuracy, difficulty, contestTime, targetText,userCity,targetWords,userWords, netWpmData, grossWpmData,grossWPM);
+            await saveContestDataGlobal(uid, username, userProfilePic, netWPM, accuracy, difficulty, contestTime, targetText, userCity, targetWords, userWords, netWpmData, grossWpmData, grossWPM);
             await increaseTestCountandChangeBestScore(netWPM);
             localStorage.setItem('contestId', contestId);
             window.location.href = "contestanalysis.html"
@@ -151,7 +216,7 @@ if (document.querySelector('.typing-container')) {
       }
 
 
-      const saveContestDataGlobal = async (uid, username, userProfilePic, netWPM, accuracy, difficulty, contestTime, targetText,userCity,targetWords,userWords,netWpmData,grossWpmData,grossWPM) => {
+      const saveContestDataGlobal = async (uid, username, userProfilePic, netWPM, accuracy, difficulty, contestTime, targetText, userCity, targetWords, userWords, netWpmData, grossWpmData, grossWPM) => {
         await set(ref(db, `contests/${contestId}`), {
           useruid: uid,
           username: username,
@@ -178,6 +243,9 @@ if (document.querySelector('.typing-container')) {
       for (let i = 0; i < targetText.length; i++) {
         const userChar = userInput[i];
         const targetChar = targetText[i];
+
+
+
 
         if (userChar === targetChar) {
           formattedText = formattedText + `<span class="correct">${targetChar}</span>`;
