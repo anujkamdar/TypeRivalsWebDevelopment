@@ -129,3 +129,7 @@
     border-radius: 10px;
 }
 
+.leaderboard-row .username span {
+    cursor: pointer;
+}
+

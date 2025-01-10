@@ -116,7 +116,7 @@ if (document.querySelector(".signin") && document.querySelector(".signup")) {
     catch (error) {
       console.log(error.message);
       alert(error.message);
-      // window.location.href = "index.html"
+      window.location.href = "index.html"
     }
 
       

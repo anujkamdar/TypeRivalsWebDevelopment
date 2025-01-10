@@ -100,7 +100,7 @@ if (document.querySelector(".header") && document.querySelector(".verify-user-pp
                           <img id= "cover-image" src="icons/keyboards-mod-musings-01.jpg" alt="">
                           <div class="your-contest-history">
                               <img src="icons/history-svgrepo-com (1).svg" alt="">
-                              <h2>Your Contest History</h2>
+                              <h2>${username} Contest History</h2>
                           </div>
                       </div>
                       <div class="contest-history-cards"></div>`

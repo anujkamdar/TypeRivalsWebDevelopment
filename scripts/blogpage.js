@@ -52,7 +52,7 @@ onAuthStateChanged(auth, async (user) => {
                             <h2>${blogData.title}</h2>
                             <div>
                                 <img src="${blogData.userProfilePic}" alt="">
-                                <p id="${blogData.useruid}">Username</p>
+                                <p id="${blogData.useruid}">${blogData.username}</p>
                             </div>
                         </div>
                         <div class="content">

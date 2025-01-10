@@ -12,7 +12,14 @@ import {
 if (document.querySelector('.header')) {
     const logOutBtn = document.querySelector('.logout');
     const publicProfileBtn = document.querySelector(".public-profile");
-    
+    const typeRivalsBtn = document.querySelector('.header-left h2')
+
+    typeRivalsBtn.addEventListener("click", () => [
+        window.location.href = "dashboard.html"
+    ])
+
+
+
     publicProfileBtn.addEventListener("click", (e) => {
         console.log(e)
         window.location.href = "publicprofile.html"

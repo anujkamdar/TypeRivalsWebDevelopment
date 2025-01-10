@@ -21,6 +21,7 @@
 .header-left h2 {
     color: rgb(16, 185, 129);
     padding-left: 30px;
+    cursor:pointer;
 }
 
 .header-right{

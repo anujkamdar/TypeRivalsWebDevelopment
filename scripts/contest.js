@@ -24,7 +24,7 @@ if (document.querySelector('.verify-contest')) {
           `
               <img src="${userData.imageUrl}">
               <p>${username}</p>
-              `
+          `
       })
     }
     else {
@@ -73,7 +73,10 @@ if (document.querySelector('.verify-contest')) {
       const normalisedText = value.replace(/\s{2,}/g, ' ');
 
 
-      
+
+
+
+
 
 
 
@@ -101,8 +104,8 @@ if (document.querySelector('.verify-contest')) {
     const realTimeStatsDiv = document.createElement('div');
     realTimeStatsDiv.classList.add('realtime-stats')
 
-    realTimeStatsDiv.innerHTML = 
-    `
+    realTimeStatsDiv.innerHTML =
+      `
         <div class="timer"><span>30</span>seconds</div>
         <div class="realtime-WPM">
             <div>0</div>
@@ -119,8 +122,8 @@ if (document.querySelector('.verify-contest')) {
 
     const typingContainerDiv = document.createElement('div')
     typingContainerDiv.classList.add('typing-container')
-    typingContainerDiv.innerHTML = 
-    `
+    typingContainerDiv.innerHTML =
+      `
         <div class="target-text"></div>
         <textarea class="input-area"></textarea>
     `
