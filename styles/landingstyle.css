@@ -49,6 +49,8 @@ body {
 
 
 
+
+
 .content .paraland {
     margin-top: 10px;
     max-width: 800px;
@@ -92,7 +94,7 @@ body {
 
 .lower {
     background-color: aqua;
-    height: 80vh;
+    min-height: 60vh;
     background-color: #111827; 
 
 }
@@ -245,3 +247,16 @@ body {
     justify-content: center;
 }
 
+@media (max-width: 768px) {
+    .content .tagline {
+        font-size: 42px;
+    }
+    .content .paraland {
+        font-size: 18px;
+        padding: 0px 10px;
+    }
+    .features {
+        flex-direction: column; 
+        gap: 40px; 
+    }   
+}

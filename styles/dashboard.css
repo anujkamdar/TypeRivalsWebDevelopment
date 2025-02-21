@@ -1,4 +1,4 @@
-.welcome {
+    .welcome {
     display: flex;
     gap: 20vw;
     margin-left: 30px;
@@ -17,7 +17,7 @@
 }
 
 .welcome .content .heading img {
-    height: 30px;
+    height: 30px;   
 }
 
 .welcome .content .heading h2 {
@@ -274,4 +274,11 @@
     font-size: 24px;
     font-weight: bold;
 }
+
+@media (max-width: 768px) {
+    .welcome .img-container img {
+        display: none;
+    }
+}
+
 

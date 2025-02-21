@@ -1,6 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js';
 import { getAuth , createUserWithEmailAndPassword , signInWithEmailAndPassword , onAuthStateChanged , signOut} from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js';
-import { getDatabase, ref, set, get, push } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js';
+import { getDatabase, ref, set, get, push, onValue } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js';
 import { getVertexAI, getGenerativeModel } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-vertexai.js'
 
 
@@ -28,7 +28,7 @@ const model = getGenerativeModel(vertexAI, {model: "gemini-1.5-flash"});
 export{
     app,
     auth, getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged,signOut,
-    db,getDatabase,ref,set,get,push,
+    db,getDatabase,ref,set,get,push,onValue,
     vertexAI,getVertexAI,getGenerativeModel,model
 }
 

@@ -54,6 +54,7 @@ if (document.querySelector(".signin") && document.querySelector(".signup")) {
 
   // Display Image Preview
   // learn this aache se abhi toh saw a video
+  
   fileInput.addEventListener('change', () => {
     profilePicture = fileInput.files[0];
     console.log(profilePicture)

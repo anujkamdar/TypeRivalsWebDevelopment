@@ -41,6 +41,7 @@ if (document.querySelector('.sidebar')) {
     const goToHistory = document.querySelector("#history");
     const goToLeaderboard = document.querySelector("#leaderboard");
     const goToBlogs = document.querySelector('#blogs');
+    const goToSocial = document.querySelector('#social');
 
 
     // let sideBarElements = document.querySelectorAll('.side-bar-element')
@@ -68,6 +69,10 @@ if (document.querySelector('.sidebar')) {
 
     goToBlogs.addEventListener("click", () => {
         window.location.href = "blogpage.html"
+    })
+
+    goToSocial.addEventListener("click",() => {
+        window.location.href = "social.html"
     })
 }
 

@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+.wrapper-to-center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+
+.selection {
+    display: flex;
+}
+
+.tab {
+    cursor: pointer;
+    text-align: center;
+    width: 250px;
+    background-color: #111827;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    padding: 20px 0px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.tab:hover {
+    opacity: 0.85;
+}
+
+.social {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 30px;
+}
+
+.user-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 50px;
+}
+
+
+
+
+.profie-card { 
+    width: 180px;
+    word-wrap: break-word;
+    white-space: normal;
+}
+ /* see how to wrap headings later this part now to just saw from stack overflow */ 
+
+.profile-pic-container {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 180px;
+    width: 100%;
+}
+
+.profie-card .profile-pic-container img{
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+
+.profie-card .person-info {
+    padding-top: 10px;
+    background-color: #111827;
+}
+
+.profie-card .person-info h3 {
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.profie-card .person-info div {
+    opacity: 0.8;
+    gap: 5px;
+    align-items: center;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.profie-card .person-info div img {
+    height: 18px;
+}
+
+.profie-card .person-info .add-friend-btn {
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 8px 8px;
+    background-color:  rgb(16, 185, 129);
+}
+
+.profie-card .person-info .add-friend-btn:hover {
+    background-color: #0d815f;
+}
+
+.already-friends{
+    border: none;
+    border-radius: 8px;
+    padding: 8px 8px;
+    background-color: blue;
+}
+

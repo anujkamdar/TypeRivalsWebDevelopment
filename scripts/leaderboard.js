@@ -16,11 +16,10 @@ if (document.querySelector(".header") && document.querySelector(".leaderboard"))
       let snapshot = await get(ref(db, `users/${uid}`));
       let userData = snapshot.val();
       const username = userData['username'];
-      userCity = userData['city']
+      userCity = userData['city'];
 
-      document.querySelector('.progress-div').remove();
       (document.querySelector('.header .public-profile')).innerHTML =
-        `
+      `
       <img src="${userData.imageUrl}">
       <p>${username}</p>
       `;
@@ -37,6 +36,7 @@ if (document.querySelector(".header") && document.querySelector(".leaderboard"))
         return b.netWPM - a.netWPM;
       })
       console.log(leaderboard);
+      document.querySelector('.progress-div').remove();
       leaderboardDiv.innerHTML =
       ` <div class="cover-image-container">
           <img id= "cover-image" src="icons/best-black-desk-setup-accessories1-1536x864.webp">
@@ -155,7 +155,7 @@ if (document.querySelector(".header") && document.querySelector(".leaderboard"))
             `
             <div class="rank">${rank}</div>
             <div class="username"><img src="${contest.userProfilePic}"><span class= "user-span" id= "${contest.useruid}">${contest.username}<span></div>
-            <div class="level"><div id="${contest.difficulty}">${contest.difficulty}</div></div>
+            <div class="level"><div id="${contest.difficulty}">${contest.difficulty}</div></div >
             <div class="duration">${contest.contestTime} sec</div>
             <div class="accuracy"><img src="icons/bullseye-solid.svg">${contest.accuracy}%</div>
             <div class="WPM">${contest.netWPM}</div>
@@ -173,8 +173,6 @@ if (document.querySelector(".header") && document.querySelector(".leaderboard"))
     }
 
       makeGlobalLeaderboard();
-
-
 
     }
     else {
